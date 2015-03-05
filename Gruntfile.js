@@ -1,11 +1,6 @@
 module.exports = function(grunt) {
 
-var allJS = [
-
-              'public/lib/underscore.js',
-              'public/lib/jquery.js',
-              'public/lib/handlebars.js',
-              'public/lib/backbone.js',
+var views = [
               'public/client/app.js',
               'public/client/link.js',
               'public/client/links.js',
@@ -13,13 +8,25 @@ var allJS = [
               'public/client/linksView.js',
               'public/client/createLinkView.js',
               'public/client/router.js',
+            ];
+
+var library = [
+
+              'public/lib/underscore.js',
+              'public/lib/jquery.js',
+              'public/lib/handlebars.js',
+              'public/lib/backbone.js',
              ];
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
       dist: {
-        src: allJS,
-        dest: 'public/deploy/production.js'
+        src: library,
+        dest: 'public/deploy/production-library.js'
+      },
+      viewsdist: {
+        src: views,
+        dest: 'public/deploy/production-views.js'
       }
     },
 
@@ -40,13 +47,13 @@ var allJS = [
 
     uglify: {
       build: {
-        src: 'public/deploy/production.js',
-        dest: 'public/deploy/production.min.js'
+        src: 'public/deploy/production-library.js',
+        dest: 'public/deploy/production-library.min.js'
       }
     },
 
     jshint: {
-      files: allJS,
+      files: library,
       options: {
         force: 'true',
         jshintrc: '.jshintrc',
@@ -62,7 +69,7 @@ var allJS = [
 
     watch: {
       scripts: {
-        files: [allJS, 'Gruntfile.js'],
+        files: [library, 'Gruntfile.js'],
         tasks: [
           'concat',
           'uglify'
@@ -110,7 +117,7 @@ var allJS = [
   // Main grunt tasks
   ////////////////////////////////////////////////////
 
-  grunt.registerTask('default', ['jshint', 'concat', 'watch', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'watch']);
 
   grunt.registerTask('test', [
     'mochaTest'
