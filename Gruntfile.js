@@ -10,7 +10,7 @@ var allJS = [
     concat: {
       dist: {
         src: allJS,
-        dest: 'deploy/production.js',
+        dest: 'public/deploy/production.js',
       }
     },
 
@@ -31,8 +31,8 @@ var allJS = [
 
     uglify: {
       build: {
-        src: 'deploy/production.js',
-        dest: 'deploy/production.min.js'
+        src: 'public/deploy/production.js',
+        dest: 'public/deploy/production.min.js'
       }
     },
 
@@ -103,8 +103,7 @@ var allJS = [
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', [
-  ]);
+  grunt.registerTask('build', ['uglify']);
 
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
