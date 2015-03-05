@@ -1,7 +1,10 @@
 module.exports = function(grunt) {
 
 var allJS = [
-              'public/lib/*.js',
+              'public/lib/underscore.js',
+              'public/lib/jquery.js',
+              'public/lib/handlebars.js',
+              'public/lib/backbone.js',
               'public/client/*.js'
              ];
   grunt.initConfig({
