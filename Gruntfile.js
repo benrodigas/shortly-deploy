@@ -62,7 +62,7 @@ var allJS = [
 
     watch: {
       scripts: {
-        files: allJS,
+        files: [allJS, 'Gruntfile.js'],
         tasks: [
           'concat',
           'uglify'
