@@ -110,7 +110,7 @@ var allJS = [
   // Main grunt tasks
   ////////////////////////////////////////////////////
 
-  grunt.registerTask('default', ['concat', 'watch', 'jshint']);
+  grunt.registerTask('default', ['jshint', 'concat', 'watch', 'uglify']);
 
   grunt.registerTask('test', [
     'mochaTest'
