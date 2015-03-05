@@ -1,7 +1,6 @@
 module.exports = function(grunt) {
 
 var allJS = [
-              'app/**/*.js',
               'lib/**/*.js',
               'public/**/*.js'
              ];
