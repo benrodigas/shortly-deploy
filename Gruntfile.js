@@ -1,11 +1,18 @@
 module.exports = function(grunt) {
 
 var allJS = [
+
               'public/lib/underscore.js',
               'public/lib/jquery.js',
               'public/lib/handlebars.js',
               'public/lib/backbone.js',
-              'public/client/*.js'
+              'public/client/app.js',
+              'public/client/link.js',
+              'public/client/links.js',
+              'public/client/linkView.js',
+              'public/client/linksView.js',
+              'public/client/createLinkView.js',
+              'public/client/router.js',
              ];
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -64,6 +71,10 @@ var allJS = [
       css: {
         files: 'public/*.css',
         tasks: ['cssmin']
+      },
+      gruntfile: {
+        files: 'Gruntfile.js',
+        task: ['']
       }
     },
 
