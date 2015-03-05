@@ -1,8 +1,8 @@
 module.exports = function(grunt) {
 
 var allJS = [
-              'public/client/*.js',
-              'public/lib/*.js'
+              'public/lib/*.js',
+              'public/client/*.js'
              ];
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
