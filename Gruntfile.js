@@ -1,15 +1,15 @@
 module.exports = function(grunt) {
 
 var allJS = [
-              'lib/**/*.js',
-              'public/**/*.js'
+              'public/client/*.js',
+              'public/lib/*.js'
              ];
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
       dist: {
         src: allJS,
-        dest: 'public/deploy/production.js',
+        dest: 'public/deploy/production.js'
       }
     },
 
