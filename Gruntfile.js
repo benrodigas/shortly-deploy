@@ -22,11 +22,11 @@ var library = [
     concat: {
       dist: {
         src: library,
-        dest: 'public/deploy/production-library.js'
+        dest: 'public/dist/production-library.js'
       },
       viewsdist: {
         src: views,
-        dest: 'public/deploy/production-views.js'
+        dest: 'public/dist/production-views.js'
       }
     },
 
@@ -47,8 +47,8 @@ var library = [
 
     uglify: {
       build: {
-        src: 'public/deploy/production-library.js',
-        dest: 'public/deploy/production-library.min.js'
+        src: 'public/dist/production-library.js',
+        dest: 'public/dist/production-library.min.js'
       }
     },
 
@@ -65,6 +65,12 @@ var library = [
     },
 
     cssmin: {
+      target: {
+        files: [{
+          src: 'public/style.css',
+          dest: 'public/dist/style.min.css'
+        }]
+      }
     },
 
     watch: {
@@ -78,10 +84,6 @@ var library = [
       css: {
         files: 'public/*.css',
         tasks: ['cssmin']
-      },
-      gruntfile: {
-        files: 'Gruntfile.js',
-        task: ['']
       }
     },
 
@@ -117,7 +119,7 @@ var library = [
   // Main grunt tasks
   ////////////////////////////////////////////////////
 
-  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'watch']);
+  grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'cssmin', 'test', 'watch']);
 
   grunt.registerTask('test', [
     'mochaTest'
