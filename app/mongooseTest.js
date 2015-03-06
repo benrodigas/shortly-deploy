@@ -2,21 +2,14 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/mydb');
 
 var dbM = mongoose.connection;
-var Schema = mongoose.Schema;
+
 dbM.on('error', console.error.bind(console, 'connection error'));
 dbM.once('open', function (callback){
 });
 
-var urlSchema = new Schema({
-    url: String,
-    base_url: String
-})
 
-exports.Url = mongoose.model('Url', urlSchema);
+
 exports.dbM = dbM;
-
-
-
 
 
 
