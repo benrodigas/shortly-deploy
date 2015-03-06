@@ -21,6 +21,7 @@ var createSha = function(url) {
 linkSchema.pre('save', function(next){
   var code = createSha(this.url);
   this.code = code;
+  next();
 });
 
 

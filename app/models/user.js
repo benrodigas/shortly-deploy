@@ -13,9 +13,13 @@ var userSchema = new Schema ({
 
 User = mongoose.model('User', userSchema);
 
-User.comparePassword = function(attemptedPassword, callback) {
-    bcrypt.compare(attemptedPassword, this.password, function(err, isMatch) {
-      callback(isMatch);
+User.comparePassword = function(attemptedPassword, savedPassword, callback) {
+    bcrypt.compare(attemptedPassword, savedPassword, function(err, isMatch) {
+      if (err) {
+        console.log('comparePassword error:', err);
+        return callback(err);
+      }
+      callback(null, isMatch);
     });
 }
 
